@@ -1,4 +1,8 @@
 package com.andersenlab.team.autotests.pageobjects.assessments.approved;
 
-public class ApprovedPage {
+import com.andersenlab.team.autotests.pageobjects.BasePage;
+
+public class ApprovedPage  extends BasePage {
+
+
 }

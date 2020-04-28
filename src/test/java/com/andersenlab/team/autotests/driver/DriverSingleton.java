@@ -7,6 +7,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class DriverSingleton {
 
     private static WebDriver driver;
@@ -15,35 +17,55 @@ public class DriverSingleton {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            switch(System.getProperty("browser")) {
-                case "firefox": {
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
+            try {
+                switch (System.getProperty("browser")) {
+                    case "firefox": {
+                        WebDriverManager.firefoxdriver().setup();
+                        driver = new FirefoxDriver();
+                        break;
+                    }
+                    case "opera": {
+                        WebDriverManager.operadriver().setup();
+                        driver = new OperaDriver();
+                        break;
+                    }
+                    case "edge": {
+                        WebDriverManager.edgedriver().setup();
+                        driver = new EdgeDriver();
+                        break;
+                    }
+                    default: {
+                        chromeDriverInit();
+                    }
                 }
-                case "opera": {
-                    WebDriverManager.operadriver().setup();
-                    driver = new OperaDriver();
-                    break;
-                }
-                case "edge": {
-                    WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
-                    break;
-                }
-                default: {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                }
+            } catch (Exception e) {
+                chromeDriverInit();
             }
-            driver.manage().window().maximize();
         }
+
+        setUpDriver();
         return driver;
     }
 
+    private static void setUpDriver() {
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    private static void chromeDriverInit() {
+        WebDriverManager.chromedriver().setup();
+        /*ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
+        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        driver = new ChromeDriver(chromeOptions);*/
+        driver = new ChromeDriver();
+    }
+
     public static void closeDriver() {
-        driver.quit();
-        driver = null;
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }
 

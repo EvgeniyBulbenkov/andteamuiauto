@@ -1,7 +1,6 @@
 package com.andersenlab.team.autotests.pageobjects.loginpage;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class LoginPageLocators {
     protected static final By LOGIN_FIELD = By.id("login");
