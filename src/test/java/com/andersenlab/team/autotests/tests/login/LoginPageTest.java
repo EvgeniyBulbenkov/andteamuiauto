@@ -6,12 +6,16 @@ import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static io.qameta.allure.Allure.step;
+
+
 public class LoginPageTest extends BaseTest {
 
-    @Test()
+    @Test(description = "Sign in")
     @Flaky
     @Story("Valid log in")
     public void validLogin() {
+
         /*-------------------- Open Sign In page --------------------*/
         loginPage.open("http://team.andersenlab.com");
 

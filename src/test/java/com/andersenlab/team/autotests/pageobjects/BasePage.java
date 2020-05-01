@@ -16,17 +16,17 @@ public abstract class BasePage {
         return pageTitle;
     }
 
-    @Step
+    @Step("Open")
     public void open(String url) {
         log.info("Trying to open page " + url);
         webDriver.get(url);
         log.info("Page " + url + " opened");
-        if(!onValidPage()) {
+        /*if(!onValidPage()) {
             log.error("Not on  thr valid page, Expected {}, Actual {}", getPageTitle(), webDriver.getTitle());
             Assert.fail("Not on valid page");
         } else {
             log.info("Opened page is valid");
-        }
+        }*/
     }
 
     public boolean onValidPage() {
