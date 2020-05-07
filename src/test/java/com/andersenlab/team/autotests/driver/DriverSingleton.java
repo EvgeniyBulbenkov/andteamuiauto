@@ -1,6 +1,8 @@
 package com.andersenlab.team.autotests.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -10,7 +12,8 @@ import org.openqa.selenium.opera.OperaDriver;
 import java.util.concurrent.TimeUnit;
 
 public class DriverSingleton {
-
+    static Logger log = LogManager.getRootLogger();
+//    private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
     private static WebDriver driver;
 
     private DriverSingleton() {}
@@ -39,11 +42,13 @@ public class DriverSingleton {
                     }
                 }
             } catch (Exception e) {
+                log.info("Property 'driver' was not set, setting up the default browser - Chrome");
                 chromeDriverInit();
             }
         }
 
         setUpDriver();
+        log.info("Initiated of driver successfully. Driver:" + driver.getClass().getName());
         return driver;
     }
 
