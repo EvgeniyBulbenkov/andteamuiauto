@@ -1,5 +1,6 @@
 package com.andersenlab.team.autotests.driver;
 
+import com.andersenlab.team.autotests.utils.WebDriverListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,13 +9,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.concurrent.TimeUnit;
 
 public class DriverSingleton {
     static Logger log = LogManager.getRootLogger();
 //    private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
-    private static WebDriver driver;
+    private static EventFiringWebDriver driver;
 
     private DriverSingleton() {}
 
@@ -24,17 +26,17 @@ public class DriverSingleton {
                 switch (System.getProperty("browser")) {
                     case "firefox": {
                         WebDriverManager.firefoxdriver().setup();
-                        driver = new FirefoxDriver();
+                        driver = new EventFiringWebDriver(new FirefoxDriver());
                         break;
                     }
                     case "opera": {
                         WebDriverManager.operadriver().setup();
-                        driver = new OperaDriver();
+                        driver = new EventFiringWebDriver(new OperaDriver());
                         break;
                     }
                     case "edge": {
                         WebDriverManager.edgedriver().setup();
-                        driver = new EdgeDriver();
+                        driver = new EventFiringWebDriver(new EdgeDriver());
                         break;
                     }
                     default: {
@@ -47,6 +49,7 @@ public class DriverSingleton {
             }
         }
 
+        driver.register(new WebDriverListener());
         setUpDriver();
         log.info("Initiated of driver successfully. Driver:" + driver.getClass().getName());
         return driver;
@@ -63,7 +66,7 @@ public class DriverSingleton {
         chromeOptions.addArguments("--headless");
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         driver = new ChromeDriver(chromeOptions);*/
-        driver = new ChromeDriver();
+        driver = new EventFiringWebDriver(new ChromeDriver());
     }
 
     public static void closeDriver() {
