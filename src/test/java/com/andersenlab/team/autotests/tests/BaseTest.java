@@ -9,18 +9,9 @@ import org.testng.annotations.*;
 @Listeners({TestListener.class})
 public class BaseTest {
 
-    protected LoginPage loginPage;
-    protected TeamMainPage teamMainPage;
-
-    @BeforeMethod
-    public void setUp() {
-        loginPage = new LoginPage();
-    }
-
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         DriverSingleton.closeDriver();
-        loginPage = null;
-        teamMainPage = null;
     }
+
 }
