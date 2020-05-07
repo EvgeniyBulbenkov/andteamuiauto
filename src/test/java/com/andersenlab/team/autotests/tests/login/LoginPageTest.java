@@ -17,16 +17,11 @@ public class LoginPageTest extends BaseTest {
     @Story("Valid log in")
     public void validLogin() {
 
-        /*-------------------- Open Sign In page --------------------*/
         loginPage.open("http://team.andersenlab.com");
-
-        /*------------------------ Test Steps -----------------------*/
         teamMainPage = loginPage
                                 .fillInLogin(UserCreationService.userName)
                                 .fillInPassword(UserCreationService.userPassword)
                                 .pushSubmitButton();
-
-        /*---------------- Checking test results --------------------*/
         Assert.assertTrue(teamMainPage.onValidPage());
 
     }

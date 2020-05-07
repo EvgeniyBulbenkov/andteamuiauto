@@ -7,30 +7,29 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 public abstract class BasePage {
     private final Logger log = LogManager.getRootLogger();
-    private static WebDriver webDriver = DriverSingleton.getDriver();
+    private WebDriver webDriver = DriverSingleton.getDriver();
     private String pageTitle;
 
     protected String getPageTitle() {
         return pageTitle;
     }
 
-    protected static WebElement findElement(By locator) {
+    protected WebElement findElement(By locator) {
         return webDriver.findElement(locator);
     }
 
-    protected static void fillTheText(By fieldLocator, String text) {
+    protected void fillTheText(By fieldLocator, String text) {
         findElement(fieldLocator).sendKeys(text);
     }
 
-    protected static void pushTheButton(By buttonLocator) {
+    protected void pushTheButton(By buttonLocator) {
         findElement(buttonLocator).click();
     }
 
-    protected static boolean elementIsVisible(By elementLocator) {
+    protected boolean elementIsVisible(By elementLocator) {
         return findElement(elementLocator).isDisplayed();
     }
 
