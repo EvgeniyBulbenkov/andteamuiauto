@@ -63,11 +63,16 @@ public class DriverSingleton {
 
     private static void chromeDriverInit() {
         WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless"); //should be enabled for Jenkins
+        options.addArguments("--disable-dev-shm-usage"); //should be enabled for Jenkins
+        options.addArguments("--window-size=1920x1080");
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("--headless", "--no-sandbox");
 //        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 //        driver = new ChromeDriver(chromeOptions);
-        driver = new EventFiringWebDriver(new ChromeDriver());
+        driver = new EventFiringWebDriver(new ChromeDriver(options));
     }
 
     public static void closeDriver() {
