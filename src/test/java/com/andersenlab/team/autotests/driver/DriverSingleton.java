@@ -63,8 +63,8 @@ public class DriverSingleton {
 
     private static void chromeDriverInit() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless", "--no-sandbox");
+//        ChromeOptions chromeOptions = new ChromeOptions();
+//        chromeOptions.addArguments("--headless", "--no-sandbox");
 //        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 //        driver = new ChromeDriver(chromeOptions);
         driver = new EventFiringWebDriver(new ChromeDriver());
