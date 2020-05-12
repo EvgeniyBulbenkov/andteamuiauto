@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -62,10 +63,10 @@ public class DriverSingleton {
 
     private static void chromeDriverInit() {
         WebDriverManager.chromedriver().setup();
-        /*ChromeOptions chromeOptions = new ChromeOptions();
+        ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
-        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        driver = new ChromeDriver(chromeOptions);*/
+//        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+//        driver = new ChromeDriver(chromeOptions);
         driver = new EventFiringWebDriver(new ChromeDriver());
     }
 
