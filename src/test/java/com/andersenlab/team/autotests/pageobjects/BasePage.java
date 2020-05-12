@@ -5,20 +5,21 @@ import com.andersenlab.team.autotests.utils.Waiters;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+
+import java.util.ArrayList;
 
 public abstract class BasePage {
     private final Logger log = LogManager.getRootLogger();
     private WebDriver webDriver = DriverSingleton.getDriver();
-    private String pageTitle;
+//    private String pageTitle;
+    private ArrayList<String> tabs;
 
-    protected String getPageTitle() {
-        return pageTitle;
+    public String getPageTitle() {
+        return webDriver.getTitle();
     }
 
-    protected WebElement findElement(By locator) {
+    private WebElement findElement(By locator) {
         return webDriver.findElement(locator);
     }
 
@@ -30,18 +31,34 @@ public abstract class BasePage {
         findElement(buttonLocator).click();
     }
 
+    protected String getElementText(By fieldLocator) {
+        return findElement(fieldLocator).getText();
+    }
+
     protected boolean elementIsVisible(By elementLocator) {
-        return findElement(elementLocator).isDisplayed();
+        try {
+            return findElement(elementLocator).isDisplayed();
+        } catch (NoSuchContextException e) {
+            log.error(e.getMessage());
+            log.error(e.getStackTrace());
+            return false;
+        }
     }
 
     @Step("Open {url}")
     public void open(String url) {
         webDriver.get(url);
-
     }
 
     public void waitForElementPresence(By element) {
         Waiters.waitForElementPresence(webDriver, element);
+    }
+
+    public void switchToTheTab(int tab) {
+        if (tabs == null) {
+            tabs = new ArrayList<>(webDriver.getWindowHandles());
+        }
+        webDriver.switchTo().window(tabs.get(tab));
     }
 
 }
