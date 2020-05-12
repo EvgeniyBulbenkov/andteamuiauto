@@ -65,9 +65,8 @@ public class DriverSingleton {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
-        options.addArguments("--headless"); //should be enabled for Jenkins
-        options.addArguments("--disable-dev-shm-usage"); //should be enabled for Jenkins
-        options.addArguments("--window-size=1920x1080");
+//        options.addArguments("--headless");
+        options.addArguments("--disable-dev-shm-usage");
 //        ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("--headless", "--no-sandbox");
 //        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
