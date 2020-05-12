@@ -62,12 +62,12 @@ public class DriverSingleton {
     }
 
     private static void chromeDriverInit() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless", "--no-sandbox");
 //        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 //        driver = new ChromeDriver(chromeOptions);
-        driver = new EventFiringWebDriver(new ChromeDriver());
+        driver = new EventFiringWebDriver(new FirefoxDriver());
     }
 
     public static void closeDriver() {
