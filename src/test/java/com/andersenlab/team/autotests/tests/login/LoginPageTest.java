@@ -22,7 +22,7 @@ public class LoginPageTest extends BaseTest {
         loginPage.open("http://team.andersenlab.com");
     }
 
-    @Test(description = "Sign in")
+//    @Test(description = "Sign in")
     @Epic("Logging in")
     @Story("Valid log in")
     @Severity(SeverityLevel.CRITICAL)
@@ -32,7 +32,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertEquals(teamMainPage.getPageTitle(), "Andersen Team");
     }
 
-    @Test(description = "Visibility of error messages")
+//    @Test(description = "Visibility of error messages")
     @Epic("Logging in")
     @Story("Visibility of error messages")
     @Severity(SeverityLevel.NORMAL)
