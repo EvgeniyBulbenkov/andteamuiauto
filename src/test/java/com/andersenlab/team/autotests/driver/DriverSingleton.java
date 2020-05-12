@@ -61,11 +61,12 @@ public class DriverSingleton {
     }
 
     private static void chromeDriverInit() {
-        WebDriverManager.chromedriver().setup();
+//        WebDriverManager.chromedriver().setup();
         /*ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         driver = new ChromeDriver(chromeOptions);*/
+        System.setProperty("webdriver.chrome.driver", "/home/anduser/Jenkins/.m2/repository/webdriver/chromedriver/linux64/81.0.4044.138/chromedriver");
         driver = new EventFiringWebDriver(new ChromeDriver());
     }
 
