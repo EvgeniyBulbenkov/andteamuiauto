@@ -3,10 +3,7 @@ package com.andersenlab.team.autotests.tests.yandex.post;
 import com.andersenlab.team.autotests.pageobjects.yandex.loginpage.LoginPage;
 import com.andersenlab.team.autotests.pageobjects.yandex.mainpage.MainPage;
 import com.andersenlab.team.autotests.tests.BaseTest;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,6 +21,8 @@ public class YandexPostLoginTest extends BaseTest {
     }
 
     @Test(description = "Sign in to Yandex Post with invalid password")
+    @Issue("050")
+    @TmsLink("Post-3")
     @Epic("Yandex Post")
     @Story("Sign in with invalid password")
     @Severity(SeverityLevel.CRITICAL)
@@ -37,6 +36,8 @@ public class YandexPostLoginTest extends BaseTest {
     }
 
     @Test(description = "Sign in to Yandex Post with invalid login")
+    @Issue("051")
+    @TmsLink("Post-4")
     @Epic("Yandex Post")
     @Story("Sign in with invalid login")
     @Severity(SeverityLevel.CRITICAL)

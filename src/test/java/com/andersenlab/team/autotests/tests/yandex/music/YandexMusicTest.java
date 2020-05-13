@@ -4,10 +4,7 @@ import com.andersenlab.team.autotests.pageobjects.yandex.loginpage.LoginPage;
 import com.andersenlab.team.autotests.pageobjects.yandex.music.MusicPage;
 import com.andersenlab.team.autotests.service.UserCreationService;
 import com.andersenlab.team.autotests.tests.BaseTest;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,6 +21,8 @@ public class YandexMusicTest extends BaseTest {
     }
 
     @Test(description = "Sign in to Yandex Music")
+    @Issue("111")
+    @TmsLink("Music-1")
     @Epic("Yandex Music")
     @Story("Valid log in")
     @Severity(SeverityLevel.CRITICAL)

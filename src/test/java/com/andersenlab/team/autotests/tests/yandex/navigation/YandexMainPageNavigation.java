@@ -2,10 +2,7 @@ package com.andersenlab.team.autotests.tests.yandex.navigation;
 
 import com.andersenlab.team.autotests.pageobjects.yandex.mainpage.MainPage;
 import com.andersenlab.team.autotests.tests.BaseTest;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -20,6 +17,8 @@ public class YandexMainPageNavigation extends BaseTest {
     }
 
     @Test(description = "Main Yandex Page Navigation")
+    @Issue("001")
+    @TmsLink("Nav-1")
     @Epic("Main Page Navigation")
     @Story("Navigate to the Video Page")
     @Severity(SeverityLevel.CRITICAL)
