@@ -32,6 +32,7 @@ public abstract class BasePage {
     }
 
     protected String getElementText(By fieldLocator) {
+        waitForElementPresence(fieldLocator);
         return findElement(fieldLocator).getText();
     }
 
