@@ -23,10 +23,6 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public boolean errorMessageIsDisplayed() {
-        return  elementIsVisible(ERROR_FIELD);
-    }
-
     public String getErrorMessage() {
         return getElementText(ERROR_FIELD);
     }

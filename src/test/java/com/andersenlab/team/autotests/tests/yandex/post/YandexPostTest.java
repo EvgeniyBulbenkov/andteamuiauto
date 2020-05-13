@@ -5,6 +5,10 @@ import com.andersenlab.team.autotests.pageobjects.yandex.mainpage.MainPage;
 import com.andersenlab.team.autotests.pageobjects.yandex.postpage.PostPage;
 import com.andersenlab.team.autotests.service.UserCreationService;
 import com.andersenlab.team.autotests.tests.BaseTest;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -21,7 +25,10 @@ public class YandexPostTest extends BaseTest {
         mainPage.open("http://yandex.ru");
     }
 
-    @Test
+    @Test(description = "Sign in to Yandex Post")
+    @Epic("Yandex Post")
+    @Story("Sign in with valid credentials")
+    @Severity(SeverityLevel.CRITICAL)
     public void signInToPost() {
         loginPage = mainPage.clickSignInToPost();
         postPage = loginPage.loginToPost(UserCreationService.userName, UserCreationService.userPassword);
@@ -29,7 +36,10 @@ public class YandexPostTest extends BaseTest {
         Assert.assertEquals(postPage.getUser(), "AutotestUser");
     }
 
-    @Test
+    @Test(description = "Sign out from Yandex Post")
+    @Epic("Yandex Post")
+    @Story("Sign out")
+    @Severity(SeverityLevel.CRITICAL)
     public void signOut() {
         signInToPost();
         postPage.signOut();

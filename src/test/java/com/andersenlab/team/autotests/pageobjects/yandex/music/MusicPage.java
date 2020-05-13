@@ -15,7 +15,6 @@ public class MusicPage extends BasePage {
     }
 
     public String getUser() {
-        String user;
         pushTheButton(AVATAR);
         return getElementText(USER_NAME);
     }

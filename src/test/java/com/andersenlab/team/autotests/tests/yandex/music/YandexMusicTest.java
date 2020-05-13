@@ -4,6 +4,10 @@ import com.andersenlab.team.autotests.pageobjects.yandex.loginpage.LoginPage;
 import com.andersenlab.team.autotests.pageobjects.yandex.music.MusicPage;
 import com.andersenlab.team.autotests.service.UserCreationService;
 import com.andersenlab.team.autotests.tests.BaseTest;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -19,7 +23,10 @@ public class YandexMusicTest extends BaseTest {
         musicPage.open("http://music.yandex.ru");
     }
 
-    @Test
+    @Test(description = "Sign in to Yandex Music")
+    @Epic("Yandex Music")
+    @Story("Valid log in")
+    @Severity(SeverityLevel.CRITICAL)
     public void validSignIn() {
         loginPage = musicPage.clickSignInButton();
         musicPage = loginPage.loginToMusic(UserCreationService.userName, UserCreationService.userPassword);

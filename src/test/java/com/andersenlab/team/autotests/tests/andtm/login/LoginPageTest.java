@@ -1,4 +1,4 @@
-package com.andersenlab.team.autotests.tests.andt.login;
+package com.andersenlab.team.autotests.tests.andtm.login;
 
 import com.andersenlab.team.autotests.pageobjects.andtm.loginpage.LoginPage;
 import com.andersenlab.team.autotests.pageobjects.andtm.teammainpage.TeamMainPage;

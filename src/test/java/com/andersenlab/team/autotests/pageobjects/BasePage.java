@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public abstract class BasePage {
     private final Logger log = LogManager.getRootLogger();
     private WebDriver webDriver = DriverSingleton.getDriver();
-//    private String pageTitle;
     private ArrayList<String> tabs;
 
     public String getPageTitle() {
@@ -59,6 +58,7 @@ public abstract class BasePage {
             tabs = new ArrayList<>(webDriver.getWindowHandles());
         }
         webDriver.switchTo().window(tabs.get(tab));
+        log.info("Checked out to browser tab #" + tab);
     }
 
 }
