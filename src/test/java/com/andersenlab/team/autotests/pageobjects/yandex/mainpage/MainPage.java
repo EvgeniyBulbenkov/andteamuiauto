@@ -12,4 +12,8 @@ public class MainPage extends BasePage {
         switchToTheTab(1);
         return new LoginPage();
     }
+
+    public boolean postSignInButtonIsDisplayed() {
+        return elementIsVisible(POST_BUTTON);
+    }
 }

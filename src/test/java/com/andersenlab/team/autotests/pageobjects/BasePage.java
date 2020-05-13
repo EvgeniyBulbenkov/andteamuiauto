@@ -38,7 +38,7 @@ public abstract class BasePage {
     protected boolean elementIsVisible(By elementLocator) {
         try {
             return findElement(elementLocator).isDisplayed();
-        } catch (NoSuchContextException e) {
+        } catch (NoSuchElementException e) {
             log.error(e.getMessage());
             log.error(e.getStackTrace());
             return false;

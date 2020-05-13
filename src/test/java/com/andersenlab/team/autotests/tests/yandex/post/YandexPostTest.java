@@ -29,6 +29,14 @@ public class YandexPostTest extends BaseTest {
         Assert.assertEquals(postPage.getUser(), "AutotestUser");
     }
 
+    @Test
+    public void signOut() {
+        signInToPost();
+        postPage.signOut();
+
+        Assert.assertTrue(mainPage.postSignInButtonIsDisplayed());
+    }
+
     @AfterMethod
     public void tearDown() {
         super.tearDown();

@@ -22,7 +22,7 @@ public class YandexMusicTest extends BaseTest {
     @Test
     public void validSignIn() {
         loginPage = musicPage.clickSignInButton();
-        musicPage = loginPage.loginToMusic(UserCreationService.userName, "AutotestUser");
+        musicPage = loginPage.loginToMusic(UserCreationService.userName, UserCreationService.userPassword);
 
         Assert.assertEquals(musicPage.getUser(), "AutotestUser");
 
