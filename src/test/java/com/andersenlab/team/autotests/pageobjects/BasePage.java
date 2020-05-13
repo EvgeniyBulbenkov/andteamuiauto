@@ -27,6 +27,7 @@ public abstract class BasePage {
     }
 
     protected void pushTheButton(By buttonLocator) {
+        waitForElementPresence(buttonLocator);
         findElement(buttonLocator).click();
     }
 

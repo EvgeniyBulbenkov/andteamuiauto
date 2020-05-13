@@ -12,7 +12,9 @@ public class PostPage extends BasePage {
     }
 
     public MainPage signOut() {
+//        waitForElementPresence(AVATAR);
         pushTheButton(AVATAR);
+//        waitForElementPresence(SIGN_OUT_BUTTON);
         pushTheButton(SIGN_OUT_BUTTON);
         return new MainPage();
     }
