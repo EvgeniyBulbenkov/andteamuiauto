@@ -17,7 +17,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class Waiters {
 
     public static void waitForElementPresence(WebDriver driver, By element) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5), Duration.ofMillis(500));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10), Duration.ofMillis(500));
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
 
     }

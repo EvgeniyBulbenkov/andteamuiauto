@@ -2,6 +2,7 @@ package com.andersenlab.team.autotests.pageobjects.yandex.loginpage;
 
 import com.andersenlab.team.autotests.pageobjects.BasePage;
 import com.andersenlab.team.autotests.pageobjects.yandex.music.MusicPage;
+import com.andersenlab.team.autotests.pageobjects.yandex.music.MusicPageLocators;
 import com.andersenlab.team.autotests.pageobjects.yandex.postpage.PostPage;
 import io.qameta.allure.Step;
 
@@ -38,6 +39,7 @@ public class LoginPage extends BasePage {
                 .fillInPassword(password)
                 .pushSignInButton();
                 switchToTheTab(0);
+                waitForElementPresence(MusicPageLocators.AVATAR);
         return new MusicPage();
     }
 
