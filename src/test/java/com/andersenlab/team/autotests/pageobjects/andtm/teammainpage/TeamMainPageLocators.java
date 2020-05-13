@@ -1,4 +1,4 @@
-package com.andersenlab.team.autotests.pageobjects.teammainpage;
+package com.andersenlab.team.autotests.pageobjects.andtm.teammainpage;
 
 import org.openqa.selenium.By;
 

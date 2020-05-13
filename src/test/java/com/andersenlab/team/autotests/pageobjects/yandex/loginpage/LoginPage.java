@@ -24,7 +24,18 @@ public class LoginPage extends BasePage {
     }
 
     public boolean errorMessageIsDisplayed() {
-        return  elementIsVisible(PASSWORD_ERROR_FIELD);
+        return  elementIsVisible(ERROR_FIELD);
+    }
+
+    public String getErrorMessage() {
+        return getElementText(ERROR_FIELD);
+    }
+
+    public void tryToLogin(String login, String password) {
+        fillInLogin(login)
+                .pushSignInButton()
+                .fillInPassword(password)
+                .pushSignInButton();
     }
 
     public MusicPage loginToMusic(String login, String password) {

@@ -1,4 +1,4 @@
-package com.andersenlab.team.autotests.pageobjects.loginpage;
+package com.andersenlab.team.autotests.pageobjects.andtm.loginpage;
 
 import org.openqa.selenium.By;
 
