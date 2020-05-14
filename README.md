@@ -6,9 +6,13 @@ To produce tests, checkout project from git:
 
 `git checkout https://github.com/EvgeniyBulbenkov/andteamuiauto.git `
 
-then run maven goal
+then run maven goal 
 
-`mvn clean test`
+`mvn clean test` - this will run in browser in headless mode
+
+or
+
+`mvn clean -Denv=local test` - this will open visible browser instance
 
 after that, to see test results, run
 

@@ -16,10 +16,10 @@ import java.util.concurrent.TimeUnit;
 
 public class DriverSingleton {
     static Logger log = LogManager.getRootLogger();
-//    private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
     private static EventFiringWebDriver driver;
 
-    private DriverSingleton() {}
+    private DriverSingleton() {
+    }
 
     public static WebDriver getDriver() {
         if (driver == null) {
@@ -53,6 +53,7 @@ public class DriverSingleton {
         driver.register(new WebDriverListener());
         setUpDriver();
         log.info("Initiated of driver successfully. Driver:" + driver.getClass().getName());
+        log.info(driver.getCapabilities());
         return driver;
     }
 
@@ -63,15 +64,18 @@ public class DriverSingleton {
 
     private static void chromeDriverInit() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
-        options.addArguments("--disable-dev-shm-usage");
-//        ChromeOptions chromeOptions = new ChromeOptions();
-//        chromeOptions.addArguments("--headless", "--no-sandbox");
-//        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-//        driver = new ChromeDriver(chromeOptions);
-        driver = new EventFiringWebDriver(new ChromeDriver(options));
+        try {
+            if (System.getProperty("env").equals("local")) {
+                driver = new EventFiringWebDriver(new ChromeDriver());
+            }
+        } catch (NullPointerException e) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--no-sandbox");
+            options.addArguments("--headless");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-infobars");
+            driver = new EventFiringWebDriver(new ChromeDriver(options));
+        }
     }
 
     public static void closeDriver() {
