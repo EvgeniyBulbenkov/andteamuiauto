@@ -73,7 +73,6 @@ public class DriverSingleton {
             options.addArguments("--no-sandbox");
             options.addArguments("--headless");
             options.addArguments("--disable-dev-shm-usage");
-            options.addArguments("--disable-infobars");
             driver = new EventFiringWebDriver(new ChromeDriver(options));
         }
     }

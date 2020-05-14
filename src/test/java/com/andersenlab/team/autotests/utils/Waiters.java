@@ -18,7 +18,9 @@ public class Waiters {
 
     public static void waitForElementPresence(WebDriver driver, By element) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10), Duration.ofMillis(500));
-        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+        wait
+                .withMessage("Can' find element " + element)
+                .until(ExpectedConditions.presenceOfElementLocated(element));
 
     }
 }
